@@ -30,6 +30,6 @@ Route::group([
 
 });
 
-Route::group([], function(){
+Route::group(['middleware' => 'jwt.verify',], function(){
     route::resource('user', 'UserController');
 });
