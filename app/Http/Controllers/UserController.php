@@ -30,7 +30,7 @@ class UserController extends Controller
     public function show($id){
         $user = User::find($id);
         if(!$user){
-            return response()->json(['message'=>'Record not found'],404);
+            return response()->json(['message'=>'Registro não encontrado'],404);
         }
         return response()->json($user);
     }
