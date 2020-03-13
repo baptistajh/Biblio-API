@@ -15,6 +15,14 @@ class UserController extends Controller
         return response()->json($users, 200);
     }
     public function store(Request $request){
+
+        //Usar para validar a requisição
+        // $validatedData = $request->validate([
+        //     'cpf'   => 'required|unique:users|max:15',
+        //     'email' => 'required|unique:users|max:155|email',
+        //     'rg'    => 'required|unique:users',
+        // ]);
+
         $user = new User();
         $user->fill($request->all());
         if (!empty($user->password)) {
