@@ -36,7 +36,7 @@ class UserController extends Controller
     }
 
     public function update(Request $request, $id){
-        if(User:where('id', $id))->exists()){
+        if(User::where('id', $id)->exists()){
             $user = User::find($id);
             $user->name = is_null();
         }
