@@ -34,6 +34,12 @@ class UserController extends Controller
         }
         return response()->json($user);
     }
+
+    public function search($email){
+        $user = User::where('email', $email)->first();
+        return response($user);
+    }
+
     public function update(){
         
     }
