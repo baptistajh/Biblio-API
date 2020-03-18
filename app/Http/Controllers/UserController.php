@@ -35,9 +35,15 @@ class UserController extends Controller
         return response()->json($user);
     }
 
-    public function update(){
+    public function update(Request $request, $id){
+        if(User:where('id', $id))->exists()){
+            $user = User::find($id);
+            $user->name = is_null();
+        }
         
+        $user->fill(Input::all())->save();
     }
+
     public function destroy(){
 
     }
