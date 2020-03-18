@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\UserController;
 
 class AuthController extends Controller
 {
@@ -30,8 +29,6 @@ class AuthController extends Controller
         if (! $token = auth()->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
-        $user = new User();
-        $user->search($credentials['email']);
         return $this->respondWithToken($token);
     }
 
