@@ -1969,6 +1969,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Component mounted.');
@@ -37440,79 +37442,74 @@ var staticRenderFns = [
     return _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-sm-9 col-md-7 col-lg-5 mx-auto" }, [
-          _c("div", { staticClass: "card card-signin my-5" }, [
-            _c("div", { staticClass: "card-body" }, [
-              _c("h5", { staticClass: "card-title text-center" }, [
-                _vm._v("Login")
+          _c("div", { staticClass: "card my-5" }, [
+            _c("form", { attrs: { action: "/api/login", method: "POST" } }, [
+              _c("div", { staticClass: "card-header" }, [
+                _c("h4", { staticClass: "text-center" }, [_vm._v("Login")])
               ]),
               _vm._v(" "),
-              _c(
-                "form",
-                { attrs: { action: "/api/auth/login", method: "POST" } },
-                [
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("label", { attrs: { for: "exampleInputEmail1" } }, [
-                      _c("span", [_c("i", { staticClass: "fas fa-envelope" })]),
-                      _vm._v(" Email")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "email",
-                        id: "InputEmail1",
-                        "aria-describedby": "emailHelp",
-                        placeholder: "Insira seu email...",
-                        name: "email"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "small",
-                      {
-                        staticClass: "form-text text-muted",
-                        attrs: { id: "emailHelp" }
-                      },
-                      [
-                        _vm._v(
-                          "Nós nunca iremos compartilhar seu email com mais ninguém."
-                        )
-                      ]
-                    )
+              _c("div", { staticClass: "card-body" }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "exampleInputEmail1" } }, [
+                    _c("span", [_c("i", { staticClass: "fas fa-envelope" })]),
+                    _vm._v(" Email")
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("label", { attrs: { for: "exampleInputPassword1" } }, [
-                      _c("span", [_c("i", { staticClass: "fas fa-lock" })]),
-                      _vm._v(" Senha")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "password",
-                        id: "exampleInputPassword1",
-                        placeholder: "Insira sua senha...",
-                        name: "password"
-                      }
-                    })
+                  _c("input", {
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "email",
+                      id: "InputEmail1",
+                      "aria-describedby": "emailHelp",
+                      placeholder: "Insira seu email...",
+                      name: "email",
+                      required: ""
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "small",
+                    {
+                      staticClass: "form-text text-muted",
+                      attrs: { id: "emailHelp" }
+                    },
+                    [
+                      _vm._v(
+                        "Nós nunca iremos compartilhar seu email com mais ninguém."
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+                    _c("span", [_c("i", { staticClass: "fas fa-lock" })]),
+                    _vm._v(" Senha")
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "d-flex justify-content-center" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-primary",
-                        attrs: { type: "submit" }
-                      },
-                      [
-                        _c("span", [_c("i", { staticClass: "fas fa-check" })]),
-                        _vm._v(" Login")
-                      ]
-                    )
-                  ])
-                ]
-              )
+                  _c("input", {
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "password",
+                      id: "exampleInputPassword1",
+                      placeholder: "Insira sua senha...",
+                      name: "password",
+                      required: ""
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-footer text-center" }, [
+                _c(
+                  "button",
+                  { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+                  [
+                    _c("span", [_c("i", { staticClass: "fas fa-check" })]),
+                    _vm._v(" Login")
+                  ]
+                )
+              ])
             ])
           ])
         ])
