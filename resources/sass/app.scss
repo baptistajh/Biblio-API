@@ -6,3 +6,8 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+// Fontawesome
+@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
+$fa-font-path: "../webfonts";
+@import "~@fortawesome/fontawesome-free/scss/solid.scss";
