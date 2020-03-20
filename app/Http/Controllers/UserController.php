@@ -40,27 +40,21 @@ class UserController extends Controller
     }
 
     public function update(Request $request, $id){
-        if(User::where('id',$id)->exists()){
-            User::where('id', $id)->update($request->all());
-            return response()->json(['message'=>'Registro alterado com sucesso']);
+        if(!User::where('id',$id)->exists()){
+            return response()->json(['message'=>'Registro não encontrado'],404);
         }
-        
-        
-        /*if(User::where('id', $id)->exists()){
-            $user = User::find($id);
-            $user->name = is_null();
-        }
-        
-        $user->fill(Input::all())->save();*/
+        User::where('id', $id)->update($request->all());
+        return response()->json(['message'=>'Registro alterado com sucesso'], 200);
     }
 
     public function destroy($id){
-        if(User::where('id',$id)->exists()){
-            User::where('id',$id)->delete();
-            return response()->json(['message'=>'Registro deletado com sucesso']);
+        if(!User::where('id',$id)->exists()){
+            return response()->json(['message'=>'Registro não encontrado'],404);
         }
+        User::where('id',$id)->delete();
+        return response()->json(['message'=>'Registro deletado com sucesso'], 200);
     }
-    
+
     public function edit(){
 
     }
