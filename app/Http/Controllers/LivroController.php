@@ -1,59 +1,55 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\User;
-use Illuminate\Http\Request;
 
-use App\Http\Requests;
+use App\Livro;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-
-class UserController extends Controller
+class LivroController extends Controller
 {
     public function index(){
-        $users = User::query()
+        $livros = Livro::query()
         ->orderBy('id')
         ->get();
-
-        return response()->json($users, 200);
-    }
-    public function store(Request $request){
-        $user = new User();
-        $user->fill($request->all());
-        if (!empty($user->password)) {
-            $user->password =bcrypt($user->password);
-        }
-        $user->save();
-
-        return response()->json($user, 201);
+        
+        return response()->json($livros, 200);
     }
     
+    public function store(Request $request){
+        $livro = new Livro();
+        $livro->fill($request->all());
+        $livro->save();
+        
+        return response()->json($livro, 201);
+    }
+
     public function create(){
         return response()->json(['message'=>'Nada para realizar nesta rota.']);
     }
-    
+
     public function show($id){
-        $user = User::find($id);
-        if(!$user){
+        $livro = Livro::find($id);
+        if(!$livro){
             return response()->json(['message'=>'Registro não encontrado'],404);
         }
-        return response()->json($user);
+        return response()->json($livro);
     }
 
     public function update(Request $request, $id){
-        if(!User::where('id',$id)->exists()){
+        if(!Livro::where('id',$id)->exists()){
             return response()->json(['message'=>'Registro não encontrado'],404);
         }
-        User::where('id', $id)->update($request->all());
+        Livro::where('id',$id)->update($request->all());
         return response()->json(['message'=>'Registro alterado com sucesso'], 200);
     }
 
     public function destroy($id){
-        if(!User::where('id',$id)->exists()){
+        if(!Livro::where('id',$id)->exists()){
             return response()->json(['message'=>'Registro não encontrado'],404);
         }
-        User::where('id',$id)->delete();
-        return response()->json(['message'=>'Registro deletado com sucesso'], 200);
+        Livro::where('id', $id)->delete();
+        return response()->json(['message'=>'Registro deletado com sucesso'],200);
     }
 
     public function edit(){
