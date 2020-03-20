@@ -29,6 +29,6 @@ Route::group([
     Route::post('me', 'AuthController@me');
 });
 
-Route::group(['middleware' => 'jwt.verify',], function(){
+//Route::group(['middleware' => 'jwt.verify',], function(){
     route::resource('user', 'UserController');
-});
+//});

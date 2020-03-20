@@ -11,7 +11,9 @@ use App\Http\Controllers\Controller;
 class UserController extends Controller
 {
     public function index(){
-        $users = User::all();
+        $users = User::query()
+        ->orderBy('id')
+        ->get();
         return response()->json($users, 200);
     }
     public function store(Request $request){
@@ -24,9 +26,11 @@ class UserController extends Controller
 
         return response()->json($user, 201);
     }
+    
     public function create(){
 
     }
+    
     public function show($id){
         $user = User::find($id);
         if(!$user){
@@ -36,17 +40,27 @@ class UserController extends Controller
     }
 
     public function update(Request $request, $id){
-        if(User::where('id', $id)->exists()){
+        if(User::where('id',$id)->exists()){
+            User::where('id', $id)->update($request->all());
+            return response()->json(['message'=>'Registro alterado com sucesso']);
+        }
+        
+        
+        /*if(User::where('id', $id)->exists()){
             $user = User::find($id);
             $user->name = is_null();
         }
         
-        $user->fill(Input::all())->save();
+        $user->fill(Input::all())->save();*/
     }
 
-    public function destroy(){
-
+    public function destroy($id){
+        if(User::where('id',$id)->exists()){
+            User::where('id',$id)->delete();
+            return response()->json(['message'=>'Registro deletado com sucesso']);
+        }
     }
+    
     public function edit(){
 
     }
