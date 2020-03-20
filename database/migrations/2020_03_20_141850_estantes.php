@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Livros extends Migration
+class Estantes extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,9 @@ class Livros extends Migration
      */
     public function up()
     {
-        Schema::create('livros', function (Blueprint $table) {
+        Schema::create('estantes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nome');
-            $table->string('autor');
-            $table->string('edicao');
-            $table->string('local');
-            $table->string('editora');
-            $table->string('ano');
-            $table->string('identificador');
+            $table->string('numero');
         });
     }
 

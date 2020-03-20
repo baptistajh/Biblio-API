@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Livro extends Model
+class Estante extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -12,7 +12,7 @@ class Livro extends Model
      * @var array
      */
     protected $fillable = [
-        'nome','autor','edicao','local','editora','ano','identificador'
+        'numero'
     ];
     
     public $timestamps = false;

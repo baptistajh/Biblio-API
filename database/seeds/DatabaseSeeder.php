@@ -13,12 +13,13 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         DB::table('livros')->insert([
-            'nome'=>str_random(10),
-            'autor'=>str_random(10),
-            'edicao'=>str_random(10),
-            'local'=>str_random(10),
-            'editora'=>str_random(10),
-            'ano'=>str_random(10)
+            "nome"=> "Sistemas Integrados de Gestão ERP, uma abordagem gerencial",
+            "autor"=> "Cícero Caiçara Junior",
+            "edicao"=> "4ª Edição",
+            "local"=> "Guariba/PR",
+            "editora"=> "Editora IBPEX Dialogica",
+            "ano"=> "2016",
+            "identificador"=>"621-L258"
             
 
 
