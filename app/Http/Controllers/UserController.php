@@ -11,7 +11,10 @@ use App\Http\Controllers\Controller;
 class UserController extends Controller
 {
     public function index(){
-        $users = User::all();
+        $users = User::query()
+        ->orderBy('id')
+        ->get();
+
         return response()->json($users, 200);
     }
     public function store(Request $request){
@@ -32,9 +35,11 @@ class UserController extends Controller
 
         return response()->json($user, 201);
     }
+    
     public function create(){
-
+        return response()->json(['message'=>'Nada para realizar nesta rota.']);
     }
+    
     public function show($id){
         $user = User::find($id);
         if(!$user){
@@ -44,19 +49,22 @@ class UserController extends Controller
     }
 
     public function update(Request $request, $id){
-        if(User::where('id', $id)->exists()){
-            $user = User::find($id);
-            $user->name = is_null();
+        if(!User::where('id',$id)->exists()){
+            return response()->json(['message'=>'Registro não encontrado'],404);
         }
-        
-        $user->fill(Input::all())->save();
+        User::where('id', $id)->update($request->all());
+        return response()->json(['message'=>'Registro alterado com sucesso'], 200);
     }
 
-    public function destroy(){
-
+    public function destroy($id){
+        if(!User::where('id',$id)->exists()){
+            return response()->json(['message'=>'Registro não encontrado'],404);
+        }
+        User::where('id',$id)->delete();
+        return response()->json(['message'=>'Registro deletado com sucesso'], 200);
     }
+
     public function edit(){
-
+        return response()->json(['message'=>'Nada para realizar nesta rota.']);
     }
-
 }
