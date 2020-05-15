@@ -23,11 +23,11 @@
                 $user = JWTAuth::parseToken()->authenticate();
             } catch (Exception $e) {
                 if ($e instanceof \Tymon\JWTAuth\Exceptions\TokenInvalidException){
-                    return response()->json(['status' => 'Token de segurança invalido, faça login novamente.'], 400);
+                    return response()->json(['status' => 'Token de segurança invalido, faça login novamente.'], 403);
                 }else if ($e instanceof \Tymon\JWTAuth\Exceptions\TokenExpiredException){
-                    return response()->json(['status' => 'Token de segurança expirado, faça login novamente.'], 400);
+                    return response()->json(['status' => 'Token de segurança expirado, faça login novamente.'], 403);
                 }else{
-                    return response()->json(['status' => 'Token de segurança não localizada, faça login novamente.'], 400);
+                    return response()->json(['status' => 'Token de segurança não localizada, faça login novamente.'], 403);
                 }
             }
             return $next($request);

@@ -24,7 +24,7 @@ Route::group(['middleware' => 'api' ], function () {
     Route::post('me', 'AuthController@me');
 });
 
-Route::group(['middleware' => 'jwt.verify',], function(){
+Route::group(['middleware' => 'jwt.verify'], function(){
     route::resource('user', 'UserController');
     route::resource('livro', 'LivroController');
     route::resource('estante', 'EstanteController');
