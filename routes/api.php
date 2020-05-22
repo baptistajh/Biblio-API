@@ -28,4 +28,5 @@ Route::group(['middleware' => 'jwt.verify'], function(){
     route::resource('user', 'UserController');
     route::resource('livro', 'LivroController');
     route::resource('estante', 'EstanteController');
+    route::resource('cliente', 'ClienteController');
 });
