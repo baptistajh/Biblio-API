@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Clientes extends Migration
+class Prateleiras extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class Clientes extends Migration
      */
     public function up()
     {
-        Schema::create('clientes', function (Blueprint $table) {
+        Schema::create('prateleiras', function (Blueprint $table){
             $table->bigIncrements('id');
-            $table->string('nome');
-            $table->string('telefone');
-            $table->string('cpf',11)->unique();
-            $table->string('email');
-            $table->string('endereco');
+            $table->string('numero');
+            $table->integer('id_estante');
+            $table->boolean('ativo');
         });
     }
 

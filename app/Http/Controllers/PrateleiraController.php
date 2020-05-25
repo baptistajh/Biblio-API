@@ -2,28 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Cliente;
+use App\Prateleira;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class ClienteController extends Controller
+class PrateleiraController extends Controller
 {
-    //COMENTÁRIOS DA IMPLEMENTAÇÃO DO FALSE/TRUE NO CAMPO ATIVO.
     public function index(){
-        $clientes = Cliente::query()
-        //->where("ativo",true)
-        ->orderBy('nome')
+        $prateleiras = Prateleira::query()
+        ->where("ativo",true)
+        ->orderBy('numero')
         ->get();
         
-        return response()->json($clientes, 200);
+        return response()->json($prateleiras, 200);
     }
     
     public function store(Request $request){
-        $cliente = new Cliente();
-        $cliente->fill($request->all());
-        $cliente->save();
+        $prateleira = new Prateleira();
+        $prateleira->fill($request->all());
+        $prateleira->save();
         
-        return response()->json($cliente, 201);
+        return response()->json($prateleira, 201);
     }
 
     public function create(){
@@ -31,28 +30,26 @@ class ClienteController extends Controller
     }
 
     public function show($id){
-        $cliente = Cliente::find($id);
-        if(!$cliente){
+        $prateleira = Prateleira::find($id);
+        if(!$prateleira){
             return response()->json(['message'=>'Registro não encontrado'],404);
         }
-        return response()->json($cliente);
+        return response()->json($prateleira);
     }
 
     public function update(Request $request, $id){
-        if(!Cliente::where('id',$id)->exists()){
+        if(!Prateleira::where('id',$id)->exists()){
             return response()->json(['message'=>'Registro não encontrado'],404);
         }
-        Cliente::where('id',$id)->update($request->all());
+        Prateleira::where('id',$id)->update($request->all());
         return response()->json(['message'=>'Registro alterado com sucesso'], 200);
     }
 
     public function destroy($id){
-        if(!Cliente::where('id',$id)->exists()){
+        if(!Prateleira::where('id',$id)->exists()){
             return response()->json(['message'=>'Registro não encontrado'],404);
         }
-        //EXEMPLO DE DELEÇÃO COM FALSE
-        //Cliente::where('id', $id)->update(['ativo' => false]);
-        Cliente::where('id', $id)->delete();
+        Prateleira::where('id', $id)->update(['ativo' => false]);
         return response()->json(['message'=>'Registro deletado com sucesso'],200);
     }
 
