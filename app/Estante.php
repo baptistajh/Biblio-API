@@ -12,7 +12,7 @@ class Estante extends Model
      * @var array
      */
     protected $fillable = [
-        'numero'
+        'numero', 'tipo_livro'
     ];
     
     public $timestamps = false;

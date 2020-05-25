@@ -30,7 +30,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `estantes` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `numero` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `numero` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tipo_livro` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -141,7 +142,6 @@ INSERT INTO `users` (`id`, `name`, `cpf`, `rg`, `data_nascimento`, `endereco`, `
 --
 ALTER TABLE `estantes`
   ADD PRIMARY KEY (`id`);
-
 --
 -- Índices para tabela `livros`
 --
