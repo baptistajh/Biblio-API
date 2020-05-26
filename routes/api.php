@@ -30,4 +30,5 @@ Route::group(['middleware' => 'jwt.verify'], function(){
     route::resource('estante', 'EstanteController');
     route::resource('cliente', 'ClienteController');
     route::resource('prateleira','PrateleiraController');
+    route::resource('corredor','CorredorController');
 });
