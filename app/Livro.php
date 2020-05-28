@@ -15,5 +15,12 @@ class Livro extends Model
         'nome','autor','edicao','local','editora','ano','identificador'
     ];
     
+    /**
+     * The storage table of the model.
+     *
+     * @var string
+     */
+    protected $table = 'livros';
+
     public $timestamps = false;
 }

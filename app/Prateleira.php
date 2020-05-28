@@ -14,6 +14,13 @@ class Prateleira extends Model
     protected $fillable = [
         'numero', 'id_estante', 'ativo'
     ];
+
+    /**
+     * The storage table of the model.
+     *
+     * @var string
+     */
+    protected $table = 'prateleiras';
     
     public $timestamps = false;
 }

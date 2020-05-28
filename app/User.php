@@ -59,4 +59,11 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    /**
+     * The storage table of the model.
+     *
+     * @var string
+     */
+    protected $table = 'users';
 }

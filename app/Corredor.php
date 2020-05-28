@@ -15,6 +15,11 @@ class Corredor extends Model
         'letra', 'ativo'
     ];
 
+    /**
+     * The storage table of the model.
+     *
+     * @var string
+     */
     protected $table = 'corredores';
     
     public $timestamps = false;

@@ -14,6 +14,13 @@ class Estante extends Model
     protected $fillable = [
         'numero', 'tipo_livro'
     ];
+
+    /**
+     * The storage table of the model.
+     *
+     * @var string
+     */
+    protected $table = 'estantes';
     
     public $timestamps = false;
 }
