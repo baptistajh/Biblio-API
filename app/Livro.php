@@ -12,7 +12,7 @@ class Livro extends Model
      * @var array
      */
     protected $fillable = [
-        'nome','autor','edicao','local','editora','ano','identificador'
+        'nome','autor','edicao','local','editora','ano','identificador', 'ativo'
     ];
     
     /**

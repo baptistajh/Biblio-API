@@ -11,6 +11,7 @@ class EstanteController extends Controller
     
     public function index(){
         $estantes = Estante::query()
+        ->where('ativo',true)
         ->orderBy('id')
         ->get();
         
@@ -49,7 +50,7 @@ class EstanteController extends Controller
         if(!Estante::where('id',$id)->exists()){
             return response()->json(['message'=>'Registro não encontrado'],404);
         }
-        Estante::where('id', $id)->delete();
+        Estante::where('id', $id)->update(['ativo' => false]);
         return response()->json(['message'=>'Registro deletado com sucesso'],200);
     }
 

@@ -12,6 +12,7 @@ class UserController extends Controller
 {
     public function index(){
         $users = User::query()
+        ->where('ativo',true)
         ->orderBy('id')
         ->get();
 
@@ -60,7 +61,7 @@ class UserController extends Controller
         if(!User::where('id',$id)->exists()){
             return response()->json(['message'=>'Registro não encontrado'],404);
         }
-        User::where('id',$id)->delete();
+        User::where('id', $id)->update(['ativo' => false]);
         return response()->json(['message'=>'Registro deletado com sucesso'], 200);
     }
 

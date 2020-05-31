@@ -8,10 +8,9 @@ use App\Http\Controllers\Controller;
 
 class ClienteController extends Controller
 {
-    //COMENTÁRIOS DA IMPLEMENTAÇÃO DO FALSE/TRUE NO CAMPO ATIVO.
     public function index(){
         $clientes = Cliente::query()
-        //->where("ativo",true)
+        ->where('ativo',true)
         ->orderBy('nome')
         ->get();
         
@@ -50,9 +49,7 @@ class ClienteController extends Controller
         if(!Cliente::where('id',$id)->exists()){
             return response()->json(['message'=>'Registro não encontrado'],404);
         }
-        //EXEMPLO DE DELEÇÃO COM FALSE
-        //Cliente::where('id', $id)->update(['ativo' => false]);
-        Cliente::where('id', $id)->delete();
+        Cliente::where('id', $id)->update(['ativo' => false]);
         return response()->json(['message'=>'Registro deletado com sucesso'],200);
     }
 

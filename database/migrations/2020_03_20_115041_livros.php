@@ -22,6 +22,7 @@ class Livros extends Migration
             $table->string('editora');
             $table->string('ano');
             $table->string('identificador');
+            $table->string('ativo');
         });
     }
 

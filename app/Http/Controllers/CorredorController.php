@@ -10,7 +10,7 @@ class CorredorController extends Controller
 {
     public function index(){
         $corredores = Corredor::query()
-        ->where("ativo",true)
+        ->where('ativo',true)
         ->orderBy('letra')
         ->get();
         

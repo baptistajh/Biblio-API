@@ -10,6 +10,7 @@ class LivroController extends Controller
 {
     public function index(){
         $livros = Livro::query()
+        ->where('ativo',true)
         ->orderBy('id')
         ->get();
         
@@ -48,7 +49,7 @@ class LivroController extends Controller
         if(!Livro::where('id',$id)->exists()){
             return response()->json(['message'=>'Registro não encontrado'],404);
         }
-        Livro::where('id', $id)->delete();
+        Livro::where('id', $id)->update(['ativo' => false]);
         return response()->json(['message'=>'Registro deletado com sucesso'],200);
     }
 

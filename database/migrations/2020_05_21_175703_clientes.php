@@ -20,6 +20,7 @@ class Clientes extends Migration
             $table->string('cpf',11)->unique();
             $table->string('email');
             $table->string('endereco');
+            $table->boolean('ativo');
         });
     }
 

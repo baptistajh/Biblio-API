@@ -10,7 +10,7 @@ class EmprestimoController extends Controller
 {
     public function index(){
         $emprestimos = Emprestimo::query()
-        ->where("ativo",true)
+        ->where('ativo',true)
         ->orderBy('data_emprestimo')
         ->get();
         
