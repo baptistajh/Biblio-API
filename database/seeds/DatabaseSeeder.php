@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
             'endereco'=>'Rua 9 de Julho, Casa '.str_random(1).' - Centro - Guariba/SP',
             'email'=>'teste@teste.com',
             'password'=>bcrypt('secret'),
+            'ativo'=>true,
         ]);
     }
 }
