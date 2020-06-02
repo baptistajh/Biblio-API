@@ -28,6 +28,6 @@ class Estantes extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('estantes');
     }
 }

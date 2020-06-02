@@ -33,6 +33,6 @@ class Livros extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('livros');
     }
 }

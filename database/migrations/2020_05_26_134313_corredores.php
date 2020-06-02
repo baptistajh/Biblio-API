@@ -27,6 +27,6 @@ class Corredores extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('corredores');
     }
 }

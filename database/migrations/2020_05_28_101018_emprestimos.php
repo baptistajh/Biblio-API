@@ -30,6 +30,6 @@ class Emprestimos extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('emprestimos');
     }
 }

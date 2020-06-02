@@ -28,6 +28,6 @@ class Prateleiras extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('prateleiras');
     }
 }
