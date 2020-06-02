@@ -16,7 +16,8 @@ class Estantes extends Migration
         Schema::create('estantes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('numero');
-            $table->boolean('ativo');
+            $table->string('tipo_livro');
+            $table->boolean('ativo')->default(true);
         });
     }
 

@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             //$table->rememberToken();
             $table->timestamps();
-            $table->boolean('ativo');
+            $table->boolean('ativo')->default(true);
         });
     }
 

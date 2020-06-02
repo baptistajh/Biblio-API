@@ -16,7 +16,7 @@ class Corredores extends Migration
         Schema::create('corredores', function (Blueprint $table){
             $table->bigIncrements('id');
             $table->string('letra');
-            $table->boolean('ativo');
+            $table->boolean('ativo')->default(true);
         });
     }
 

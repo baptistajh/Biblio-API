@@ -17,7 +17,7 @@ class Prateleiras extends Migration
             $table->bigIncrements('id');
             $table->string('numero');
             $table->integer('id_estante');
-            $table->boolean('ativo');
+            $table->boolean('ativo')->default(true);
         });
     }
 

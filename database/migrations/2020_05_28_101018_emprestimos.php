@@ -19,7 +19,7 @@ class Emprestimos extends Migration
             $table->date('dia_devolucao');
             $table->integer('id_cliente');
             $table->integer('id_livro');
-            $table->boolean('ativo');
+            $table->boolean('ativo')->default(true);
         });
     }
 
