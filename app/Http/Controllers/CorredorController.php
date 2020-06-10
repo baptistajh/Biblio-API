@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Corredor;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CorredorRequest;
 
 class CorredorController extends Controller
 {
@@ -17,7 +18,7 @@ class CorredorController extends Controller
         return response()->json($corredores, 200);
     }
     
-    public function store(Request $request){
+    public function store(CorredorRequest $request){
         $corredor = new Corredor();
         $corredor->fill($request->all());
         $corredor->save();
@@ -37,7 +38,7 @@ class CorredorController extends Controller
         return response()->json($corredor);
     }
 
-    public function update(Request $request, $id){
+    public function update(CorredorRequest $request, $id){
         if(!Corredor::where('id',$id)->exists()){
             return response()->json(['message'=>'Registro não encontrado'],404);
         }

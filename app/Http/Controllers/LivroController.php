@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Livro;
 use Illuminate\Http\Request;
+use App\Http\Requests\LivroRequest;
 use App\Http\Controllers\Controller;
 
 class LivroController extends Controller
@@ -17,7 +18,7 @@ class LivroController extends Controller
         return response()->json($livros, 200);
     }
     
-    public function store(Request $request){
+    public function store(LivroRequest $request){
         $livro = new Livro();
         $livro->fill($request->all());
         $livro->save();
@@ -37,7 +38,7 @@ class LivroController extends Controller
         return response()->json($livro);
     }
 
-    public function update(Request $request, $id){
+    public function update(LivroRequest $request, $id){
         if(!Livro::where('id',$id)->exists()){
             return response()->json(['message'=>'Registro não encontrado'],404);
         }

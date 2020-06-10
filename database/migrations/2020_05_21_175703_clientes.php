@@ -17,7 +17,7 @@ class Clientes extends Migration
             $table->bigIncrements('id');
             $table->string('nome');
             $table->string('telefone');
-            $table->string('cpf',11)->unique();
+            $table->string('cpf',14)->unique();
             $table->string('email');
             $table->string('endereco');
             $table->boolean('ativo')->default(true);
