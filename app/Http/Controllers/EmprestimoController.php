@@ -11,7 +11,7 @@ class EmprestimoController extends Controller
     public function index(){
         $emprestimos = Emprestimo::query()
         ->where('ativo',true)
-        ->orderBy('data_emprestimo')
+        /*->orderBy('data_emprestimo')*/
         ->get();
         
         return response()->json($emprestimos, 200);

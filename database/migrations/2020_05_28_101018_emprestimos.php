@@ -17,8 +17,8 @@ class Emprestimos extends Migration
             $table->bigIncrements('id');
             $table->date('dia_emprestimo');
             $table->date('dia_devolucao');
-            $table->integer('id_cliente');
-            $table->integer('id_livro');
+            $table->integer('id_cliente')->references('id')->on('clientes');
+            $table->integer('id_livro')->references('id')->on('livros');
             $table->boolean('ativo')->default(true);
         });
     }
