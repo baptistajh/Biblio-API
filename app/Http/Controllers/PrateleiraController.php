@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Prateleira;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PrateleiraRequest;
 
 class PrateleiraController extends Controller
 {
@@ -17,7 +18,7 @@ class PrateleiraController extends Controller
         return response()->json($prateleiras, 200);
     }
     
-    public function store(Request $request){
+    public function store(PrateleiraRequest $request){
         $prateleira = new Prateleira();
         $prateleira->fill($request->all());
         $prateleira->save();
@@ -37,7 +38,7 @@ class PrateleiraController extends Controller
         return response()->json($prateleira);
     }
 
-    public function update(Request $request, $id){
+    public function update(PrateleiraRequest $request, $id){
         if(!Prateleira::where('id',$id)->exists()){
             return response()->json(['message'=>'Registro não encontrado'],404);
         }

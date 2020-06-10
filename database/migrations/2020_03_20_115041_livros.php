@@ -17,10 +17,10 @@ class Livros extends Migration
             $table->bigIncrements('id');
             $table->string('nome');
             $table->string('autor');
-            $table->string('edicao');
+            $table->integer('edicao');
             $table->string('local');
             $table->string('editora');
-            $table->string('ano');
+            $table->integer('ano');
             $table->string('identificador');
             $table->string('ativo')->default(true);
         });

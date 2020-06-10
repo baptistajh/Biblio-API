@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\User;
-use Illuminate\Http\Request;
-
 use App\Http\Requests;
+use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
 use App\Http\Controllers\Controller;
 
 
@@ -18,14 +18,7 @@ class UserController extends Controller
 
         return response()->json($users, 200);
     }
-    public function store(Request $request){
-
-        //Usar para validar a requisição
-        // $validatedData = $request->validate([
-        //     'cpf'   => 'required|unique:users|max:15',
-        //     'email' => 'required|unique:users|max:155|email',
-        //     'rg'    => 'required|unique:users',
-        // ]);
+    public function store(UserRequest $request){
 
         $user = new User();
         $user->fill($request->all());
@@ -49,7 +42,7 @@ class UserController extends Controller
         return response()->json($user);
     }
 
-    public function update(Request $request, $id){
+    public function update(UserRequest $request, $id){
         if(!User::where('id',$id)->exists()){
             return response()->json(['message'=>'Registro não encontrado'],404);
         }
