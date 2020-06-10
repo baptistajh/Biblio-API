@@ -25,22 +25,12 @@ class UserRequest extends FormRequest
     {
         return [
             'name'            => 'required|string|max:255',
-            'cpf'             => 'required|min:14|max:14|unique:users,id,'.\Request::get('id'),
-            'rg'              => 'required|min:9|max:9|unique:users,id,'.\Request::get('id'),
+            'cpf'             => 'required|min:14|max:14|unique:users,cpf,'.$this->route('user') ?? 0,
+            'rg'              => 'required|min:9|max:9|unique:users,rg,'.$this->route('user') ?? 0,
             'data_nascimento' => 'required',
             'endereco'        => 'required',
-            'email'           => 'required|email|unique:users,id,'.\Request::get('id'),
+            'email'           => 'required|email|unique:users,email,'.$this->route('user') ?? 0,
             'password'        => 'required'
         ];
-    }
-
-     /**
-     * Custom message for validation
-     *
-     * @return array
-     */
-    public function messages()
-    {
-        return [];
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Estante;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\EstanteRequest;
 
 class EstanteController extends Controller
 {
@@ -18,7 +19,7 @@ class EstanteController extends Controller
         return response()->json($estantes, 200);
     }
     
-    public function store(Request $request){
+    public function store(EstanteRequest $request){
         $estante = new Estante();
         $estante->fill($request->all());
         $estante->save();
@@ -38,7 +39,7 @@ class EstanteController extends Controller
         return response()->json($estante);
     }
 
-    public function update(Request $request, $id){
+    public function update(EstanteRequest $request, $id){
         if(!Estante::where('id',$id)->exists()){
             return response()->json(['message'=>'Registro não encontrado'],404);
         }

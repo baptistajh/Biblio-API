@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Cliente;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ClienteRequest;
 
 class ClienteController extends Controller
 {
@@ -17,7 +18,7 @@ class ClienteController extends Controller
         return response()->json($clientes, 200);
     }
     
-    public function store(Request $request){
+    public function store(ClienteRequest $request){
         $cliente = new Cliente();
         $cliente->fill($request->all());
         $cliente->save();
@@ -37,7 +38,7 @@ class ClienteController extends Controller
         return response()->json($cliente);
     }
 
-    public function update(Request $request, $id){
+    public function update(ClienteRequest $request, $id){
         if(!Cliente::where('id',$id)->exists()){
             return response()->json(['message'=>'Registro não encontrado'],404);
         }

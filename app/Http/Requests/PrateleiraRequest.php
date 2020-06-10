@@ -28,14 +28,4 @@ class PrateleiraRequest extends FormRequest
             'id_estante' => 'required|integer',
         ];
     }
-
-     /**
-     * Custom message for validation
-     *
-     * @return array
-     */
-    public function messages()
-    {
-        return [];
-    }
 }

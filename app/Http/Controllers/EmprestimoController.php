@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Emprestimo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\EmprestimoRequest;
 
 class EmprestimoController extends Controller
 {
@@ -17,7 +18,7 @@ class EmprestimoController extends Controller
         return response()->json($emprestimos, 200);
     }
     
-    public function store(Request $request){
+    public function store(EmprestimoRequest $request){
         $emprestimo = new Emprestimo();
         $emprestimo->fill($request->all());
         $emprestimo->save();
@@ -37,7 +38,7 @@ class EmprestimoController extends Controller
         return response()->json($emprestimo);
     }
 
-    public function update(Request $request, $id){
+    public function update(EmprestimoRequest $request, $id){
         if(!Emprestimo::where('id',$id)->exists()){
             return response()->json(['message'=>'Registro não encontrado'],404);
         }
