@@ -32,9 +32,9 @@ class EmprestimoController extends Controller
     
     public function store(EmprestimoRequest $request){
         
-        if(DB::table('livros')->where('id', $request->id_livro)->select('emprestado'))
+        if(DB::table('livros')->where('id', $request->id_livro)->select('emprestado') == true){
             return response()->json(['message' => 'Este livro já está emprestado.'],401);
-
+        }
         $emprestimo = new Emprestimo();
         $emprestimo->fill($request->all());
         $emprestimo->save();
