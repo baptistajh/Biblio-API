@@ -29,7 +29,10 @@ Route::group(['middleware' => 'jwt.verify'], function(){
     route::resource('livro', 'LivroController');
     route::resource('estante', 'EstanteController');
     route::resource('cliente', 'ClienteController');
-    route::resource('prateleira','PrateleiraController');
-    route::resource('corredor','CorredorController');
+    route::resource('prateleira', 'PrateleiraController');
+    route::resource('corredor', 'CorredorController');
     route::resource('emprestimo', 'EmprestimoController');
+
+    //ROTAS PERSONALIZADAS
+    route::get('/home', 'HomeController@index');
 });

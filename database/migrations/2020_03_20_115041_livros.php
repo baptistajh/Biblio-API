@@ -22,7 +22,8 @@ class Livros extends Migration
             $table->string('editora');
             $table->integer('ano');
             $table->string('identificador')->nullable();
-            $table->string('ativo')->default(true);
+            $table->boolean('emprestado')->default(false);
+            $table->boolean('ativo')->default(true);
         });
     }
 

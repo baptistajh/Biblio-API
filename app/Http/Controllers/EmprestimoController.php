@@ -6,22 +6,41 @@ use App\Emprestimo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EmprestimoRequest;
+use Illuminate\Support\Facades\DB;
 
 class EmprestimoController extends Controller
 {
     public function index(){
-        $emprestimos = Emprestimo::query()
-        ->where('ativo',true)
-        /*->orderBy('data_emprestimo')*/
-        ->get();
+        $emprestimos = DB::table('emprestimos')
+            ->join('clientes', 'clientes.id', '=', 'id_cliente')
+            ->join('livros', 'livros.id', '=', 'id_livro')
+            ->select(
+                'emprestimos.id',
+                'emprestimos.dia_emprestimo',
+                'emprestimos.dia_devolucao',
+                'clientes.nome as cliente_nome',
+                'clientes.cpf as cliente_cpf',
+                'clientes.email as cliente_email',
+                'livros.nome as livro_nome',
+                'livros.autor as livro_autor',
+                'livros.identificador as livro_identificador')
+            ->where('emprestimos.ativo', true)
+            ->get();
         
         return response()->json($emprestimos, 200);
     }
     
     public function store(EmprestimoRequest $request){
+        
+        if(!DB::table('livros')->where('id', $request->id_livro)->select('emprestado'))
+            return response()->json(['message' => 'Este livro já está emprestado.']);
+
         $emprestimo = new Emprestimo();
         $emprestimo->fill($request->all());
         $emprestimo->save();
+
+        DB::table('livros')->where('id', $request->id_livro)
+        ->update(['emprestado' => true]);
         
         return response()->json($emprestimo, 201);
     }
@@ -50,6 +69,10 @@ class EmprestimoController extends Controller
         if(!Emprestimo::where('id',$id)->exists()){
             return response()->json(['message'=>'Registro não encontrado'],404);
         }
+
+        DB::table('livros')->where('id', $id)
+        ->update(['emprestado' => false]);
+
         Emprestimo::where('id', $id)->update(['ativo' => false]);
         return response()->json(['message'=>'Registro deletado com sucesso'],200);
     }
