@@ -32,9 +32,12 @@ class EmprestimoController extends Controller
     
     public function store(EmprestimoRequest $request){
         
-        if(DB::table('livros')->where('id', $request->id_livro)->select('emprestado') == true){
-            return response()->json(['message' => 'Este livro já está emprestado.'],401);
+        $emprestado = DB::table('livros')->where('id', $request->id_livro)->select('emprestado')->first();
+
+        if($emprestado->emprestado != 0){
+            return response()->json(['message' => 'Este livro já está emprestado.'], 401);
         }
+
         $emprestimo = new Emprestimo();
         $emprestimo->fill($request->all());
         $emprestimo->save();
@@ -70,7 +73,9 @@ class EmprestimoController extends Controller
             return response()->json(['message'=>'Registro não encontrado'],404);
         }
 
-        DB::table('livros')->where('id', $id)
+        $idlivro = DB::table('emprestimos')->where('id', $id)->select('id_livro')->first();
+
+        DB::table('livros')->where('id', $idlivro->id_livro)
         ->update(['emprestado' => false]);
 
         Emprestimo::where('id', $id)->update(['ativo' => false]);
