@@ -13,24 +13,22 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            //"nome"=> "Sistemas Integrados de Gestão ERP, uma abordagem gerencial",
-            //"autor"=> "Cícero Caiçara Junior",
-            //"edicao"=> "4ª Edição",
-            //"local"=> "Guariba/PR",
-            //"editora"=> "Editora IBPEX Dialogica",
-            //"ano"=> "2016",
-            //"identificador"=>"621-L258"
-            
-
-
-            'name'=>str_random(20), 
-            'cpf'=>str_random(11),
-            'rg'=>str_random(9),
+            'name'=>'Biblio Teste', 
+            'cpf'=>'111.111.111-11',
+            'rg'=>'111111111',
             'data_nascimento'=>'1999-06-15',
             'endereco'=>'Rua 9 de Julho, Casa '.str_random(1).' - Centro - Guariba/SP',
             'email'=>'teste@teste.com',
             'password'=>bcrypt('secret'),
             'ativo'=>true,
         ]);
+        /*DB::table('clientes')->insert([
+            'nome'     => 'José Henrique Baptista Junior',
+            'telefone' => '',
+            'cpf'      => '',
+            'email'    => '',
+            'endereco' => '',
+            'ativo'    => true,
+        ])*/
     }
 }

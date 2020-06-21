@@ -11,11 +11,20 @@ class LivroController extends Controller
 {
     public function index(){
         $livros = Livro::query()
-        ->where('ativo',true)
+        ->where('ativo', true)
+        ->orderBy('id')
+        ->get();
+
+        $livros_disponiveis = Livro::query()
+        ->where('ativo', true)
+        ->where('emprestado', false)
         ->orderBy('id')
         ->get();
         
-        return response()->json($livros, 200);
+        return response()->json([
+            'livros' => $livros,
+            'livros_disponiveis' => $livros_disponiveis
+        ], 200);
     }
     
     public function store(LivroRequest $request){
@@ -39,16 +48,19 @@ class LivroController extends Controller
     }
 
     public function update(LivroRequest $request, $id){
-        if(!Livro::where('id',$id)->exists()){
+        if(!Livro::where('id', $id)->exists()){
             return response()->json(['message'=>'Registro não encontrado'],404);
         }
-        Livro::where('id',$id)->update($request->all());
+        Livro::where('id', $id)->update($request->all());
         return response()->json(['message'=>'Registro alterado com sucesso'], 200);
     }
 
     public function destroy($id){
-        if(!Livro::where('id',$id)->exists()){
+        if(!Livro::where('id', $id)->exists()){
             return response()->json(['message'=>'Registro não encontrado'],404);
+        }
+        if(Livro::where('id', $id)->where('emprestado', true)){
+            return response()->json(['message'=>'Este livro está emprestado.'],404);
         }
         Livro::where('id', $id)->update(['ativo' => false]);
         return response()->json(['message'=>'Registro deletado com sucesso'],200);
