@@ -30,6 +30,7 @@ class HomeController extends Controller
 
         DB::statement("SET lc_time_names = 'pt_BR'");
         $lmes = DB::table('emprestimos')
+        ->where(DB::raw("YEAR('dia_emprestimo') = YEAR(CURDATE())"))
         ->select(DB::raw('MONTHNAME(dia_emprestimo) as mes, count(id) as livros'))
         ->groupBy(DB::raw('MONTHNAME(dia_emprestimo)'))
         ->get();
