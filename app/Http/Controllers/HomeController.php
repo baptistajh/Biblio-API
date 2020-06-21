@@ -30,8 +30,8 @@ class HomeController extends Controller
 
         DB::statement("SET lc_time_names = 'pt_BR'");
         $lmes = DB::table('emprestimos')
-        ->select(DB::raw('MONTHNAME(dia_emprestimo) as mes, count(id) as livros'))
-        ->groupBy(DB::raw('MONTHNAME(dia_emprestimo)'))
+        ->select(DB::raw('MONTHNAME(dia_emprestimo) as mes, YEAR(dia_emprestimo) as ano, count(id) as livros'))
+        ->groupBy(DB::raw('MONTHNAME(dia_emprestimo), YEAR(dia_emprestimo)'))
         ->get();
 
         return response()->json([
