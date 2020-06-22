@@ -25,7 +25,6 @@ class PrateleiraRequest extends FormRequest
     {
         return [
             'numero'     => 'required|integer',
-            'id_estante' => 'required|integer',
         ];
     }
 }

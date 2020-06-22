@@ -16,7 +16,6 @@ class Prateleiras extends Migration
         Schema::create('prateleiras', function (Blueprint $table){
             $table->bigIncrements('id');
             $table->integer('numero');
-            $table->integer('id_estante');
             $table->boolean('ativo')->default(true);
         });
     }

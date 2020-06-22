@@ -25,7 +25,6 @@ class EstanteRequest extends FormRequest
     {
         return [
             'numero'     => 'required|integer',
-            'tipo_livro' => 'required|string'
         ];
     }
 }

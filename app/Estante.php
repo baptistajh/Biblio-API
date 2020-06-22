@@ -12,7 +12,7 @@ class Estante extends Model
      * @var array
      */
     protected $fillable = [
-        'numero', 'tipo_livro', 'id_corredor','ativo'
+        'numero','ativo'
     ];
 
     /**

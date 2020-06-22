@@ -12,7 +12,7 @@ class Prateleira extends Model
      * @var array
      */
     protected $fillable = [
-        'numero', 'id_estante', 'ativo'
+        'numero', 'ativo'
     ];
 
     /**
