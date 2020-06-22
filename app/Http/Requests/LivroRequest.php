@@ -30,7 +30,9 @@ class LivroRequest extends FormRequest
             'local'         => 'required|string',
             'editora'       => 'required|string',
             'ano'           => 'required|integer',
-            'identificador' => 'string|nullable',
+            'id_corredor'   => 'integer|nullable',
+            'id_estante'    => 'integer|nullable',
+            'id_prateleira' => 'integer|nullable',
         ];
     }
 }

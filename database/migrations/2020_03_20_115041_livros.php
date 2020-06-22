@@ -21,7 +21,9 @@ class Livros extends Migration
             $table->string('local');
             $table->string('editora');
             $table->integer('ano');
-            $table->string('identificador')->nullable();
+            $table->integer('id_corredor')->references('id')->on('corredores');
+            $table->integer('id_estante')->references('id')->on('estantes');
+            $table->integer('id_prateleira')->references('id')->on('prateleiras');
             $table->boolean('emprestado')->default(false);
             $table->boolean('ativo')->default(true);
         });

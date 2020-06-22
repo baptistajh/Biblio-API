@@ -23,7 +23,7 @@ class EmprestimoController extends Controller
                 'clientes.email as cliente_email',
                 'livros.nome as livro_nome',
                 'livros.autor as livro_autor',
-                'livros.identificador as livro_identificador')
+                'livros.id as livro_id')
             ->where('emprestimos.ativo', true)
             ->get();
         

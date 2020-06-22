@@ -6,13 +6,30 @@ use App\Livro;
 use Illuminate\Http\Request;
 use App\Http\Requests\LivroRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class LivroController extends Controller
 {
     public function index(){
-        $livros = Livro::query()
-        ->where('ativo', true)
-        ->orderBy('id')
+        $livros = DB::table('livros')
+        ->join('corredores', 'corredores.id', '=', 'id_corredor')
+        ->join('estantes', 'estantes.id', '=', 'id_estante')
+        ->join('prateleiras', 'prateleiras.id', '=', 'id_prateleira')
+        ->select(
+            'livros.id',
+            'livros.nome',
+            'livros.autor',
+            'livros.edicao',
+            'livros.local',
+            'livros.editora',
+            'livros.ano',
+            'livros.emprestado', 
+            'corredores.letra as corredor', 
+            'estantes.numero as estante', 
+            'prateleiras.numero as prateleira', 
+            'livros.ativo')
+        ->where('livros.ativo', true)
+        ->orderBy('livros.id')
         ->get();
 
         $livros_disponiveis = Livro::query()
@@ -20,6 +37,9 @@ class LivroController extends Controller
         ->where('emprestado', false)
         ->orderBy('id')
         ->get();
+
+
+        
         
         return response()->json([
             'livros' => $livros,
